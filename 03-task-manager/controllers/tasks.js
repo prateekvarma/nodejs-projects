@@ -37,7 +37,7 @@ const updateTask = async (req, res) => {
     const task = await Task.findByIdAndUpdate({ _id: taskID }, req.body, {
       new: true,
       runValidators: true,
-    }); // the { new: true } is not necessary, but it helps get the fresh values instead of stale values. Its the options request.
+    }); // the { new: true, runValidators: true } is not necessary, but it helps get the fresh values instead of stale values. Its the options request.
     if (!task) {
       return res.status(404).json({ message: `No task with id: ${taskID}` });
     }
